@@ -16,7 +16,9 @@ const Index = () => {
           <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto animate-fade-up">
             Express your love with beautiful, heartfelt messages that touch the soul
           </p>
-          <HeartAnimation />
+          <div className="flex justify-center">
+            <HeartAnimation />
+          </div>
         </div>
       </section>
 
