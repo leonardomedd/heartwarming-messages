@@ -5,10 +5,11 @@ import { MessageGallery } from "@/components/MessageGallery";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-love-50">
-      {/* Hero Section */}
-      <section className="py-20 text-center">
-        <div className="container px-4 mx-auto">
+    <div className="min-h-screen bg-gradient-to-b from-white via-love-50 to-love-100">
+      {/* Hero Section with enhanced background */}
+      <section className="relative py-20 text-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-love-100/50 via-white/80 to-love-100/50" />
+        <div className="container px-4 mx-auto relative z-10">
           <h1 className="font-playfair text-4xl md:text-6xl font-bold text-gray-900 mb-6 animate-fade-down">
             Share Your Heart
           </h1>
@@ -19,8 +20,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Message Form Section */}
-      <section className="py-16 bg-white">
+      {/* Message Form Section with soft gradient */}
+      <section className="py-16 bg-gradient-to-b from-white via-white to-love-50/30">
         <div className="container px-4 mx-auto">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
             Send a Love Message
@@ -29,8 +30,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Message Gallery Section */}
-      <section className="py-16">
+      {/* Message Gallery Section with diagonal gradient */}
+      <section className="py-16 bg-gradient-to-br from-love-50/50 via-white to-love-50/50">
         <div className="container px-4 mx-auto">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center mb-12">
             Love Messages Gallery
@@ -39,9 +40,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-16 bg-white">
-        <div className="container px-4 mx-auto text-center max-w-3xl">
+      {/* About Section with subtle pattern */}
+      <section className="py-16 relative bg-white">
+        <div className="absolute inset-0 bg-gradient-to-t from-love-50/30 to-white/50" />
+        <div className="container px-4 mx-auto text-center max-w-3xl relative z-10">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-8">
             About Us
           </h2>
