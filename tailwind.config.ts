@@ -41,7 +41,7 @@ export default {
         "heart-beat": "heart-beat 1.4s ease-in-out infinite",
         "fade-up": "fade-up 0.5s ease-out",
         "fade-down": "fade-down 0.5s ease-out",
-        float: "float 3s ease-in-out infinite",
+        float: "float 3s ease-in-out forwards",
       },
       keyframes: {
         "heart-beat": {
@@ -57,8 +57,14 @@ export default {
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
+          "0%": { 
+            transform: "translate(0, 0) rotate(0deg)",
+            opacity: "1"
+          },
+          "100%": { 
+            transform: "translate(var(--tx, -5vw), -100vh) rotate(var(--r, -15deg))",
+            opacity: "0"
+          },
         },
       },
     },

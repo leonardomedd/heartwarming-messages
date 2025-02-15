@@ -1,7 +1,14 @@
 
 import { Heart } from "lucide-react";
 
-const messages = [
+export type LoveMessage = {
+  id: number;
+  message: string;
+  from: string;
+  to: string;
+};
+
+const initialMessages: LoveMessage[] = [
   {
     id: 1,
     message: "Every moment with you is like a dream come true. You make my heart smile.",
@@ -20,7 +27,36 @@ const messages = [
     from: "David",
     to: "Lisa",
   },
+  {
+    id: 4,
+    message: "Your love is the strength that keeps me going, the light that guides my way.",
+    from: "Robert",
+    to: "Emma",
+  },
+  {
+    id: 5,
+    message: "Every love story is beautiful, but ours is my favorite.",
+    from: "William",
+    to: "Sophie",
+  },
+  {
+    id: 6,
+    message: "You're not just my love, you're my best friend and my soulmate.",
+    from: "James",
+    to: "Olivia",
+  }
 ];
+
+let messages = [...initialMessages];
+
+export const addMessage = (message: Omit<LoveMessage, "id">) => {
+  const newMessage = {
+    ...message,
+    id: messages.length + 1,
+  };
+  messages = [newMessage, ...messages];
+  return newMessage;
+};
 
 export const MessageGallery = () => {
   return (

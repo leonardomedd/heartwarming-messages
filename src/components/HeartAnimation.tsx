@@ -1,15 +1,35 @@
 
 import { Heart } from "lucide-react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 export const HeartAnimation = () => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const scrollToMessageForm = useCallback(() => {
+    const messageForm = document.getElementById("message-form");
+    messageForm?.scrollIntoView({ behavior: "smooth" });
+
+    // Create floating hearts
+    for (let i = 0; i < 6; i++) {
+      const heart = document.createElement("div");
+      heart.innerHTML = "❤️";
+      heart.className = "fixed text-2xl pointer-events-none animate-float";
+      heart.style.left = `${Math.random() * 100}%`;
+      heart.style.top = "50%";
+      heart.style.animation = `float ${2 + Math.random()}s ease-out forwards`;
+      document.body.appendChild(heart);
+
+      // Remove heart after animation
+      setTimeout(() => heart.remove(), 3000);
+    }
+  }, []);
 
   return (
     <div 
       className="relative w-40 h-40 flex items-center justify-center cursor-pointer group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={scrollToMessageForm}
     >
       {/* Multiple glowing layers */}
       <div className={`absolute inset-0 bg-love-200 rounded-full filter blur-xl transition-all duration-500 group-hover:scale-150 ${isHovered ? 'opacity-75' : 'opacity-30'}`} />

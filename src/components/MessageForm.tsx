@@ -4,24 +4,48 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { addMessage } from "./MessageGallery";
 
 export const MessageForm = () => {
   const [message, setMessage] = useState("");
   const [recipient, setRecipient] = useState("");
+  const [sender, setSender] = useState("");
   const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    addMessage({
+      message,
+      to: recipient,
+      from: sender,
+    });
+
     toast({
       title: "Message sent",
       description: "Your love message has been shared!",
     });
+
     setMessage("");
     setRecipient("");
+    setSender("");
+
+    // Force re-render of the page to show the new message
+    window.location.reload();
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-lg mx-auto">
+    <form id="message-form" onSubmit={handleSubmit} className="space-y-6 max-w-lg mx-auto">
+      <div className="space-y-2">
+        <label className="block text-sm font-medium text-gray-700">Your Name</label>
+        <Input
+          value={sender}
+          onChange={(e) => setSender(e.target.value)}
+          placeholder="Enter your name"
+          className="w-full"
+          required
+        />
+      </div>
       <div className="space-y-2">
         <label className="block text-sm font-medium text-gray-700">Recipient's Name</label>
         <Input
